@@ -59,7 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    CustomTextFormField( onChanged: (data) {
+                    CustomTextFormField(
+                      onChanged: (data) {
                       email = data;
                     },
                       hintText: 'Email',
@@ -68,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 10,
                     ),
                     CustomTextFormField(
+                      obscureText: true,
                       onChanged: (data) {
                       password = data;
                     },
@@ -86,13 +88,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           try {
                             await loginUser();
                             showSnackBar(context, 'Success');
-                            Navigator.pushNamed(context, 'ChatPage');
+                            Navigator.pushNamed(context, 'ChatPage',arguments: email);
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
                               showSnackBar(context, 'No user found for that email.');
                             } else if (e.code == 'wrong-password') {
-                              showSnackBar(context,
-                                  'Wrong password provided for that user.');
+                              showSnackBar(context,'Wrong password provided for that user.');
                             }
                           } catch (e) {
                             showSnackBar(context, e.toString());
