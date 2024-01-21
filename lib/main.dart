@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/chat_screen.dart';
 import 'package:chat_app/screens/login_screen.dart';
 import 'package:chat_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         'LoginPage': (context) => LoginScreen(),
         'RegisterPage': (context) => RegisterScreen(),
+        ChatScreen.id : (context) => ChatScreen(),
       },
       initialRoute: 'LoginPage',
     );

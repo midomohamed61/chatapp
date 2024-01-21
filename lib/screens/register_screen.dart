@@ -76,6 +76,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             try {
                               await registerUser();
                               showSnackBar(context, 'Success');
+                              Navigator.pushNamed(context, 'ChatPage');
+
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'weak-password') {
                                 showSnackBar(context, 'weak-password');
